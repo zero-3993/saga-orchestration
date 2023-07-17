@@ -1,0 +1,22 @@
+server:
+  port: 8083
+---
+service:
+  endpoints:
+    inventory: http://localhost:8081
+    payment: http://localhost:8082
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "httptrace"
+          - "health"
+          - "info"
